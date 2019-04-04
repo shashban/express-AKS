@@ -53,7 +53,7 @@ stages:
   - deployment: Deploy
     displayName: Deploy job
     pool: default
-    environment: 'emptyProd'
+    environment: 'expressAKS-Canary'
     strategy:
       runOnce:
         deploy:
