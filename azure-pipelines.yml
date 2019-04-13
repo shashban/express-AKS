@@ -11,7 +11,7 @@ resources:
 variables:
 
   # Container registry service connection established during pipeline creation - Docker Hub/ACR/...
-  dockerRegistryServiceConnection: '2aaa00bf-6f37-462a-93c0-2f57bfa160bc'
+  dockerRegistryServiceConnection: '2d20faab-f854-4f42-bb40-d52b8b368525'
   imageRepository: 'express-aks'
   containerRegistryName: 'atulmakshelm.azurecr.io'
   dockerfilePath: '**/Dockerfile'
