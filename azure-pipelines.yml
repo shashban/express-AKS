@@ -1,0 +1,29 @@
+# Deploy to Kubernetes #4
+# Build a Docker image, push to an Azure Container Registry, and deploy it to Azure Kubernetes Service.
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+- master
+
+stages:
+- stage: Build
+  displayName: Build stage
+  jobs:  
+  - job: Build
+    displayName: Build job
+    pool: default
+    steps:
+    - script: echo build and push
+- stage: Deploy
+  displayName: Deploy stage
+  dependsOn: Build
+  jobs:
+  - deployment: Deploy
+    displayName: Deploy job
+    pool: default
+    environment: 'gopinathchexpressAKS.default'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo deploying
