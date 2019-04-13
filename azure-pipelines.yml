@@ -8,7 +8,7 @@ stages:
   jobs:  
   - job: Build
     displayName: Build job
-    pool: default
+    
     steps:
     - script: echo build and push
 - stage: Deploy
@@ -17,8 +17,8 @@ stages:
   jobs:
   - deployment: Deploy
     displayName: Deploy job
-    pool: default
-    environment: 'gopinathchexpressAKS.default'
+    
+    environment: 'emptyprod'
     strategy:
       runOnce:
         deploy:
