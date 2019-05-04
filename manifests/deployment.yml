@@ -1,0 +1,16 @@
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: shashbanexpressaks 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: shashbanexpressaks 
+    spec:
+      containers:
+        - name: shashbanexpressaks 
+          image: msft3test.azurecr.io/shashbanexpressaks 
+          ports:
+          - containerPort: 3000
