@@ -1,5 +1,6 @@
 parameters:
   StageName: ''
+  DependsOn: ''
   EnvironmentResource: ''
   vmImageName: ''
   imagePullSecret: ''
@@ -11,6 +12,7 @@ parameters:
 stages
 - stage: ${{ parameters.StageName }}
   displayName: ${{ parameters.StageName }} stage
+  dependsOn: ${{ parameters.DependsOn }}
   jobs:
   - deployment: Deploy
     displayName: Deploy
