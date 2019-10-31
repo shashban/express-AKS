@@ -43,10 +43,10 @@ stages:
     - upload: manifests
       artifact: manifests
 
-- template: kubernetesstagetemplate.yml
-  dependsOn: Build
+- template: kubernetesstagetemplate.yml  
   parameters:
     StageName: 'Deploy'
+    DependsOn: 'Build'
     EnvironmentResource: 'shashbanexpressAKS.default'
     vmImageName: $(vmImageName)
     imagePullSecret: $(imagePullSecret)
@@ -56,9 +56,9 @@ stages:
     tag: $(tag)
  
 - template: kubernetesstagetemplate.yml
-  dependsOn: Deploy
   parameters:
     StageName: 'Prod'
+    DependsOn: 'Deploy'
     EnvironmentResource: 'Prod.rai-test'
     vmImageName: $(vmImageName)
     imagePullSecret: $(imagePullSecret)
