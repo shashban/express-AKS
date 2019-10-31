@@ -11,34 +11,8 @@ parameters:
   tag: ''
 
 stages:
-- stage: ${{ parameters.StageName }}
-  displayName: ${{ parameters.StageName }} stage
-  dependsOn: ${{ parameters.DependsOn }}
+- stage: ${{ parameters.StageName }}  
   jobs:
-  - deployment: Deploy
-    displayName: Deploy
-    pool:
-      vmImage: ${{ parameters.vmImageName }}
-    environment: ${{ parametersEnvironmentResource }}
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - task: KubernetesManifest@0
-            displayName: Create imagePullSecret
-            inputs:
-              action: createSecret
-              secretName: ${{ parameters.imagePullSecret }} 
-              dockerRegistryEndpoint:  ${{ parameters.dockerRegistryServiceConnection }} 
-              
-          - task: KubernetesManifest@0
-            displayName: Deploy to Kubernetes cluster
-            inputs:
-              action: deploy
-              manifests: |
-                $(Pipeline.Workspace)/manifests/deployment.yml
-                $(Pipeline.Workspace)/manifests/service.yml
-              imagePullSecrets: |
-                ${{ parameters.imagePullSecret }} 
-              containers: |
-                ${{ parameters.containerRegistry }}/${{ parameters.imageRepository }}:${{ parameters.tag }}
+  - job: ${{ parameters.name }}_Windows
+    steps:
+    - script: echo abc
