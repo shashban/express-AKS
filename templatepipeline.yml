@@ -9,7 +9,6 @@ resources:
 - repo: self
 
 variables:
-
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: 'bc137c3a-a276-40a7-aa53-ac9e64840675'
   imageRepository: 'shashbanexpressaks'
