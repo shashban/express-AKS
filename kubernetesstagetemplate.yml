@@ -1,3 +1,4 @@
+
 parameters:
   StageName: ''
   DependsOn: ''
@@ -8,8 +9,8 @@ parameters:
   containerRegistry: ''
   imageRepository: ''
   tag: ''
-  
-stages
+
+stages:
 - stage: ${{ parameters.StageName }}
   displayName: ${{ parameters.StageName }} stage
   dependsOn: ${{ parameters.DependsOn }}
