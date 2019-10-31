@@ -13,6 +13,10 @@ parameters:
 stages:
 - stage: ${{ parameters.StageName }}  
   jobs:
-  - job: ${{ parameters.name }}_Windows
-    steps:
-    - script: echo abc
+  - deployment: deploy
+    environment: ${{ parameters.EnvironmentResource }}  
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - script: echo abc
