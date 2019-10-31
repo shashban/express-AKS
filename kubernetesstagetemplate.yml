@@ -11,7 +11,9 @@ parameters:
   tag: ''
 
 stages:
-- stage: ${{ parameters.StageName }}  
+- stage: ${{ parameters.StageName }} 
+  dependsOn: ${{ parameters.DependsOn }} 
+  displayName: ${{ parameters.StageName }} stage
   jobs:
   - deployment: deploy
     environment: ${{ parameters.EnvironmentResource }}  
